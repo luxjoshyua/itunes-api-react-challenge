@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import AlbumSingle from "../Album/AlbumSingle";
+import AlbumParentContainer from "../AlbumWrapper/AlbumWrapper";
 
 /* Create the class that inherits from the Component class
     This class has a constructor that contains `props` as a parameter and the state of that component
@@ -20,7 +20,7 @@ class GetAlbums extends Component {
         // you must call super if using a constructor
         // we pass props to it so we can use this.props
         super(props);
-        console.log(this.props);
+        // console.log(this.props); is empty
         this.state = {
             error: null,
             isLoaded: false,
@@ -39,13 +39,15 @@ class GetAlbums extends Component {
                 // handle the result
                 result => {
                     console.log("I am the result", result);
-                    console.log(result.feed.entry[0]["im:name"]);
+
+                    console.log(result.feed.entry[0]["im:name"]); // accesses the first entrys album name
 
                     this.setState({
                         isLoaded: true,
-                        albums: result
+                        albums: result // trying to add the result to the albums variable
                     });
                 },
+
                 // handle errors
                 error => {
                     this.setState({
@@ -60,6 +62,8 @@ class GetAlbums extends Component {
     render() {
         // assign state values to variables so I can say albums instead of this.state.albums
         const { error, isLoaded, albums } = this.state;
+        // console.log(albums, "albums here");
+        console.log(albums.feed);
 
         // if there's an error fetching, show an error div
         if (error) {
@@ -72,9 +76,9 @@ class GetAlbums extends Component {
         // otherwise render out the AlbumSingle component
         else {
             return (
-                <AlbumSingle>
-                    {/* <h1>{this.props.entry[0]["im:name"]}</h1> */}
-                </AlbumSingle>
+                <div>
+                    <h1>Album name here</h1>
+                </div>
             );
         }
     }

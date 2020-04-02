@@ -30,7 +30,7 @@ const AlbumImg = styled.img`
 // in AlbumSingle, I need to pass in data from the json feed e.g. album name, img, artist name, but how?
 
 const AlbumSingle = props => {
-    console.log(props); // props is empty!!
+    // console.log(props); // props is empty!!
     return (
         <AlbumWrapper>
             <AlbumInner>
