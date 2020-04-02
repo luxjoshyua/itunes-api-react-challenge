@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import AlbumSingle from "../Album/AlbumSingle";
+
 /* Create the class that inherits from the Component class
     This class has a constructor that contains `props` as a parameter and the state of that component
     This state has three properties:
@@ -8,12 +10,17 @@ import React, { Component } from "react";
      albums - contains the JSON content
 */
 
+/**
+ * GetAlbums class is where I fetch the data, and also import my AlbumSingle component,
+ * which should be one album populated with data e.g. image, name, band
+ */
+
 class GetAlbums extends Component {
     constructor(props) {
         // you must call super if using a constructor
         // we pass props to it so we can use this.props
         super(props);
-        console.log(this.props, "is empty");
+        console.log(this.props);
         this.state = {
             error: null,
             isLoaded: false,
@@ -31,6 +38,9 @@ class GetAlbums extends Component {
             .then(
                 // handle the result
                 result => {
+                    console.log("I am the result", result);
+                    console.log(result.feed.entry[0]["im:name"]);
+
                     this.setState({
                         isLoaded: true,
                         albums: result
@@ -54,21 +64,17 @@ class GetAlbums extends Component {
         // if there's an error fetching, show an error div
         if (error) {
             return <div>Error in loading, please wait</div>;
-            // if page hasn't loaded, show a loading div
-        } else if (!isLoaded) {
+        }
+        // if page hasn't loaded, show a loading div
+        else if (!isLoaded) {
             return <div>Loading....</div>;
-            // otherwise render out the album components
-        } else {
+        }
+        // otherwise render out the AlbumSingle component
+        else {
             return (
-                <div>
-                    <ol>
-                        {albums.map(album => (
-                            <li key={album.id}>
-                                <div></div>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
+                <AlbumSingle>
+                    {/* <h1>{this.props.entry[0]["im:name"]}</h1> */}
+                </AlbumSingle>
             );
         }
     }

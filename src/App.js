@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import "./App.css";
 
 // Components
-import GetAlbums from "./components/Albums/GetAlbums";
+import GetAlbums from "./components/AlbumFetch/GetAlbums";
 
 /**
  * Base Requirements
