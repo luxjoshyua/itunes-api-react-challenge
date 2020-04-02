@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Always import external libraries first, then your own
+import React, { Component } from "react";
+// import styled from "styled-components";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// CSS
+import "./App.css";
+
+// Components
+import GetAlbums from "./components/Albums/GetAlbums";
+
+/**
+ * Base Requirements
+ *  Show top 100 albums based on JSON feed here - https://itunes.apple.com/us/rss/topalbums/limit=100/json
+ *  Show twenty albums, then load another twenty, for performance
+ */
+
+//  Fetch the data
+
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <GetAlbums></GetAlbums>
+            </div>
+        );
+    }
 }
-
 export default App;
