@@ -73,13 +73,32 @@ class GetAlbums extends Component {
             return <div>Loading....</div>;
         }
         // otherwise render out the AlbumSingle component
-        // console.log(albums);
         else {
-            console.log(albums.feed.author); // I can log the data successfully here because we've now fetched the data correctly
+            // I can log the data successfully here because we've now fetched and loaded the data correctly
+            // console.log(albums.feed);
+
             return (
-                <div>
-                    <h1>{albums.feed.entry[0].title.label}</h1>
-                </div>
+                // <div>
+                //     {/* .map() is only available on arrays - mine is an object */}
+                //     <h1>{albums.feed.entry[0].title.label}</h1>
+                //     <h1>{albums.feed.entry[1].title.label}</h1>
+                // </div>
+                Object.entries(albums).map(([key, value]) => {
+                    // key for key, value for value
+                    // console.log(`${key}: ${value}`);
+                    console.log(value); // value is the whole object!
+
+                    // try to get 20 album titles displaying in spans
+                    // const albumTitle = value.entry[0].title.label;
+                    // console.log(albumTitle);
+                    for (let i = 0; i <= 20; i++) {}
+
+                    return (
+                        <div>
+                            <span>{value.entry[0].title.label}</span>
+                        </div>
+                    );
+                })
             );
         }
     }
