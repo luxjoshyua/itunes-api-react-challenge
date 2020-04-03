@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+
+import GetAlbums from "../AlbumFetch/GetAlbums";
+
 import AlbumSingle from "../Album/AlbumSingle";
 
 const AlbumContainer = styled.div`
@@ -13,11 +16,8 @@ const AlbumContainer = styled.div`
 `;
 
 const AlbumParentContainer = props => {
-    return (
-        <AlbumContainer>
-            <AlbumSingle></AlbumSingle>
-        </AlbumContainer>
-    );
+    // console.log(this.props, "What is it worth here"); // props is empty
+    return <GetAlbums></GetAlbums>;
 };
 
 export default AlbumParentContainer;

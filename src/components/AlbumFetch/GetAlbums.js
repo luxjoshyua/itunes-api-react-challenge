@@ -20,7 +20,7 @@ class GetAlbums extends Component {
         // you must call super if using a constructor
         // we pass props to it so we can use this.props
         super(props);
-        // console.log(this.props); is empty
+
         this.state = {
             error: null,
             isLoaded: false,
@@ -62,7 +62,6 @@ class GetAlbums extends Component {
     render() {
         // assign state values to variables so I can say albums instead of this.state.albums
         const { error, isLoaded, albums } = this.state;
-        // console.log(albums, "albums here");
 
         // if there's an error fetching, show an error div
         if (error) {
@@ -70,21 +69,29 @@ class GetAlbums extends Component {
         }
         // if page hasn't loaded, show a loading div
 
-        //you dont need an else if here because the IF the above ^ if is true then it returns. so if the computer reaches here 
-        //then the above if must be false. 
+        //you dont need an else if here because if the above ^ if is true, then it returns, so if the computer reaches here
+        //then the above if must be false, it won't be else if do this, it's just if
+
         if (!isLoaded) {
             return <div>Loading....</div>;
         }
+
+        console.log("What is props worth here", this.props); // empty
+
         // otherwise render out the AlbumSingle component
-        
         const entries = albums.feed.entry;
 
+        // this is returning just the name of each album - 100 in total
         return (
             <div>
-                {entries.map(entry => <h1 key={entry.title.label}>{entry.title.label}</h1>)}
+                {entries.map(entry => (
+                    <h1 key={entry.title.label}>{entry.title.label}</h1>
+                ))}
 
+                {/* this is my parent album wrapper component, where I will pass my child album component to */}
+                {/* <AlbumParentContainer></AlbumParentContainer> */}
             </div>
-        )
+        );
     }
 }
 
