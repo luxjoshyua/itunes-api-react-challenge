@@ -69,38 +69,22 @@ class GetAlbums extends Component {
             return <div>Error in loading, please wait</div>;
         }
         // if page hasn't loaded, show a loading div
-        else if (!isLoaded) {
+
+        //you dont need an else if here because the IF the above ^ if is true then it returns. so if the computer reaches here 
+        //then the above if must be false. 
+        if (!isLoaded) {
             return <div>Loading....</div>;
         }
         // otherwise render out the AlbumSingle component
-        else {
-            // I can log the data successfully here because we've now fetched and loaded the data correctly
-            // console.log(albums.feed);
+        
+        const entries = albums.feed.entry;
 
-            return (
-                // <div>
-                //     {/* .map() is only available on arrays - mine is an object */}
-                //     <h1>{albums.feed.entry[0].title.label}</h1>
-                //     <h1>{albums.feed.entry[1].title.label}</h1>
-                // </div>
-                Object.entries(albums).map(([key, value]) => {
-                    // key for key, value for value
-                    // console.log(`${key}: ${value}`);
-                    console.log(value); // value is the whole object!
+        return (
+            <div>
+                {entries.map(entry => <h1 key={entry.title.label}>{entry.title.label}</h1>)}
 
-                    // try to get 20 album titles displaying in spans
-                    // const albumTitle = value.entry[0].title.label;
-                    // console.log(albumTitle);
-                    for (let i = 0; i <= 20; i++) {}
-
-                    return (
-                        <div>
-                            <span>{value.entry[0].title.label}</span>
-                        </div>
-                    );
-                })
-            );
-        }
+            </div>
+        )
     }
 }
 
