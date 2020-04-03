@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import AlbumParentContainer from "../AlbumWrapper/AlbumWrapper";
+import styled from "styled-components";
+
+import AlbumSingle from "../Album/AlbumSingle";
 
 /* Create the class that inherits from the Component class
     This class has a constructor that contains `props` as a parameter and the state of that component
@@ -76,7 +78,7 @@ class GetAlbums extends Component {
             return <div>Loading....</div>;
         }
 
-        console.log("What is props worth here", this.props); // empty
+        // console.log("What is props worth here", this.props); // empty
 
         // otherwise render out the AlbumSingle component
         const entries = albums.feed.entry;
@@ -85,11 +87,12 @@ class GetAlbums extends Component {
         return (
             <div>
                 {entries.map(entry => (
-                    <h1 key={entry.title.label}>{entry.title.label}</h1>
-                ))}
+                    <AlbumSingle>
+                        <p key={entry.title.label}>{entry.title.label}</p>
+                    </AlbumSingle>
 
-                {/* this is my parent album wrapper component, where I will pass my child album component to */}
-                {/* <AlbumParentContainer></AlbumParentContainer> */}
+                    // <h1 key={entry.title.label}>{entry.title.label}</h1>
+                ))}
             </div>
         );
     }
