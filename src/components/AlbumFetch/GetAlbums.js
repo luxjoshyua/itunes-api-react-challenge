@@ -38,9 +38,9 @@ class GetAlbums extends Component {
             .then(
                 // handle the result
                 result => {
-                    console.log("I am the result", result);
+                    // console.log("I am the result", result);
 
-                    console.log(result.feed.entry[0]["im:name"]); // accesses the first entrys album name
+                    // console.log(result.feed.entry[0]["im:name"]); // accesses the first entrys album name
 
                     this.setState({
                         isLoaded: true,
@@ -63,7 +63,6 @@ class GetAlbums extends Component {
         // assign state values to variables so I can say albums instead of this.state.albums
         const { error, isLoaded, albums } = this.state;
         // console.log(albums, "albums here");
-        console.log(albums.feed);
 
         // if there's an error fetching, show an error div
         if (error) {
@@ -74,10 +73,12 @@ class GetAlbums extends Component {
             return <div>Loading....</div>;
         }
         // otherwise render out the AlbumSingle component
+        // console.log(albums);
         else {
+            console.log(albums.feed.author); // I can log the data successfully here because we've now fetched the data correctly
             return (
                 <div>
-                    <h1>Album name here</h1>
+                    <h1>{albums.feed.entry[0].title.label}</h1>
                 </div>
             );
         }
