@@ -73,7 +73,6 @@ class GetAlbums extends Component {
 
         //you dont need an else if here because if the above ^ if is true, then it returns, so if the computer reaches here
         //then the above if must be false, it won't be else if do this, it's just if
-
         if (!isLoaded) {
             return <div>Loading....</div>;
         }
@@ -82,16 +81,21 @@ class GetAlbums extends Component {
 
         // otherwise render out the AlbumSingle component
         const entries = albums.feed.entry;
+        // console.log("Here is my album image", entries[0]["im:image"][2].label);
+
+        // <h1 key={entry.title.label}>{entry.title.label}</h1>
 
         // this is returning just the name of each album - 100 in total
         return (
+            // can return one HTML element, hence needs to be wrapped in div
             <div>
                 {entries.map(entry => (
                     <AlbumSingle>
                         <p key={entry.title.label}>{entry.title.label}</p>
+                        <img key={entry["im:image"][2]}>
+                            {entry["im:image"][2]}
+                        </img>
                     </AlbumSingle>
-
-                    // <h1 key={entry.title.label}>{entry.title.label}</h1>
                 ))}
             </div>
         );

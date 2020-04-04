@@ -13,7 +13,7 @@ const AlbumWrapper = styled.div`
     min-height: 300px;
     min-width: 300px;
     max-width: 340px;
-    background-color: green;
+    background-color: #33d233;
     margin-bottom: 10px;
     margin: 32px auto;
 `;
@@ -38,16 +38,19 @@ const AlbumImg = styled.img`
     width: auto;
 `;
 
-// in AlbumSingle, I need to pass in data from the json feed e.g. album name, img, artist name, but how?
-
+// props is being passed from GetAlbums
 const AlbumSingle = props => {
-    console.log(props.children.key); // props is empty!!
+    // this comes from GetAlbum
+    // console.log(props.children);
     return (
         <AlbumWrapper>
             <AlbumInner>
+                {/* set the album title */}
                 <AlbumTitle key={props.children.key}>
                     {props.children.key}
                 </AlbumTitle>
+
+                {/* set the album image */}
                 <AlbumImg></AlbumImg>
             </AlbumInner>
         </AlbumWrapper>
