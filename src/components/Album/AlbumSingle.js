@@ -41,7 +41,9 @@ const AlbumImg = styled.img`
 // props is being passed from GetAlbums
 const AlbumSingle = props => {
     // this comes from GetAlbum
+    // console.log(props);
     // console.log(props.children);
+
     return (
         <AlbumWrapper>
             <AlbumInner>

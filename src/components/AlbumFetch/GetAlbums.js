@@ -80,8 +80,9 @@ class GetAlbums extends Component {
         // console.log("What is props worth here", this.props); // empty
 
         // otherwise render out the AlbumSingle component
+
         const entries = albums.feed.entry;
-        // console.log("Here is my album image", entries[0]["im:image"][2].label);
+        console.log("Here is my album image", entries[0]["im:image"][2].label);
 
         // <h1 key={entry.title.label}>{entry.title.label}</h1>
 
@@ -92,9 +93,8 @@ class GetAlbums extends Component {
                 {entries.map(entry => (
                     <AlbumSingle>
                         <p key={entry.title.label}>{entry.title.label}</p>
-                        <img key={entry["im:image"][2]}>
-                            {entry["im:image"][2]}
-                        </img>
+
+                        <img key={entry["im:image"][2]} />
                     </AlbumSingle>
                 ))}
             </div>
