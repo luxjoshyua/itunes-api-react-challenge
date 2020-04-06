@@ -53,7 +53,7 @@ const AlbumSingle = props => {
                 </AlbumTitle>
 
                 {/* set the album image */}
-                <AlbumImg></AlbumImg>
+                <AlbumImg src={props.image} />
             </AlbumInner>
         </AlbumWrapper>
     );
