@@ -48,12 +48,12 @@ const AlbumSingle = props => {
         <AlbumWrapper>
             <AlbumInner>
                 {/* set the album title */}
-                <AlbumTitle key={props.children.key}>
-                    {props.children.key}
+                <AlbumTitle>
+                    {props.title}
                 </AlbumTitle>
 
                 {/* set the album image */}
-                <AlbumImg></AlbumImg>
+                <AlbumImg src={props.image} />
             </AlbumInner>
         </AlbumWrapper>
     );
