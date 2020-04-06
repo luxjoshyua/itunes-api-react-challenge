@@ -90,12 +90,9 @@ class GetAlbums extends Component {
         return (
             // can return one HTML element, hence needs to be wrapped in div
             <div>
-                {entries.map(entry => (
-                    <AlbumSingle>
-                        <p key={entry.title.label}>{entry.title.label}</p>
-
-                        <img key={entry["im:image"][2]} />
-                    </AlbumSingle>
+                {entries.map((entry, index) => (
+                    
+                    <AlbumSingle key={index} title={entry.title.label} image={entry["im:image"][2].label} />
                 ))}
             </div>
         );
