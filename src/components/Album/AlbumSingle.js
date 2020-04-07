@@ -1,13 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-const AlbumContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-`;
-
 const AlbumWrapper = styled.div`
     border: 1px solid black;
     max-width: 280px;
@@ -52,6 +45,10 @@ const AlbumBuyButton = styled.button`
     background-color: #ffffffd9;
     cursor: pointer;
     border-radius: 46px;
+
+    &:hover {
+        opacity: 0.6;
+    }
 `;
 
 const AlbumBuyLink = styled.a`
@@ -67,9 +64,8 @@ const AlbumSingle = (props) => {
     // this comes from GetAlbum
     // console.log(props);
     // console.log(props.children);
-
     return (
-        <AlbumWrapper>
+        <AlbumWrapper className="AlbumTile">
             <AlbumInner>
                 {/* set the album title */}
                 <AlbumTitle>{props.title}</AlbumTitle>
