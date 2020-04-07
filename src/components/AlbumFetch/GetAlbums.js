@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import styled from "styled-components";
-
 import AlbumSingle from "../Album/AlbumSingle";
 
 /* Create the class that inherits from the Component class
@@ -17,6 +15,16 @@ import AlbumSingle from "../Album/AlbumSingle";
  * which should be one album populated with data e.g. image, name, band
  */
 
+const AlbumParentWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-flow: wrap;
+    padding-top: 64px;
+`;
+
 class GetAlbums extends Component {
     constructor(props) {
         // you must call super if using a constructor
@@ -26,7 +34,7 @@ class GetAlbums extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            albums: []
+            albums: [],
         };
     }
 
@@ -36,25 +44,25 @@ class GetAlbums extends Component {
     componentDidMount() {
         // fetch the json feed
         fetch("https://itunes.apple.com/us/rss/topalbums/limit=100/json")
-            .then(response => response.json()) // get the result, turn to json (is already in json format but?!)
+            .then((response) => response.json()) // get the result, turn to json (is already in json format but?!)
             .then(
                 // handle the result
-                result => {
+                (result) => {
                     // console.log("I am the result", result);
 
                     // console.log(result.feed.entry[0]["im:name"]); // accesses the first entrys album name
 
                     this.setState({
                         isLoaded: true,
-                        albums: result // trying to add the result to the albums variable
+                        albums: result, // trying to add the result to the albums variable
                     });
                 },
 
                 // handle errors
-                error => {
+                (error) => {
                     this.setState({
                         isLoaded: true,
-                        error
+                        error,
                     });
                 }
             );
@@ -80,21 +88,21 @@ class GetAlbums extends Component {
         // console.log("What is props worth here", this.props); // empty
 
         // otherwise render out the AlbumSingle component
-
         const entries = albums.feed.entry;
-        console.log("Here is my album image", entries[0]["im:image"][2].label);
 
-        // <h1 key={entry.title.label}>{entry.title.label}</h1>
-
-        // this is returning just the name of each album - 100 in total
         return (
             // can return one HTML element, hence needs to be wrapped in div
-            <div>
+            <AlbumParentWrapper>
                 {entries.map((entry, index) => (
-                    
-                    <AlbumSingle key={index} title={entry.title.label} image={entry["im:image"][2].label} />
+                    <AlbumSingle
+                        key={index}
+                        title={entry.title.label}
+                        image={entry["im:image"][2].label}
+                        price={entry["im:price"].label}
+                        buy={entry.link.attributes.href}
+                    />
                 ))}
-            </div>
+            </AlbumParentWrapper>
         );
     }
 }
