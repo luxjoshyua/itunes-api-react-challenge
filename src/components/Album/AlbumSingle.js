@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useInView } from "react-intersection-observer";
 
 const AlbumWrapper = styled.div`
     border: 1px solid black;
@@ -64,9 +65,16 @@ const AlbumSingle = (props) => {
     // this comes from GetAlbum
     // console.log(props);
     // console.log(props.children);
+
+    const [ref, inView] = useInView({
+        threshold: 0.9,
+    });
+
+    console.log("this is what my ref looks like");
+
     return (
-        <AlbumWrapper className="AlbumTile">
-            <AlbumInner>
+        <AlbumWrapper className="AlbumTile" inView={inView}>
+            <AlbumInner ref={ref}>
                 {/* set the album title */}
                 <AlbumTitle>{props.title}</AlbumTitle>
                 {/* set the album image */}

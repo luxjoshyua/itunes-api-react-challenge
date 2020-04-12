@@ -11,11 +11,10 @@ ReactDOM.render(<App />, document.getElementById("root"));
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-const albumTile = document.querySelectorAll(".AlbumTile");
-console.log(albumTile);
-// ReactDOM.findDOMNode(AlbumSingle);
+// const albumTile = document.querySelectorAll(".AlbumTile");
+// console.log(albumTile);
 
-const fixedBackgrounds = document.querySelectorAll(".chapter-fixed-bg");
+// const fixedBackgrounds = document.querySelectorAll(".chapter-fixed-bg");
 
 // intersection observer
 // const options = {
