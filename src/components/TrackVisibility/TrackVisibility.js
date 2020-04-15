@@ -10,10 +10,14 @@ class TrackVisibility extends Component {
                 if (entry.intersectionRatio === 1) {
                     // Item is fully in view
                     // this.props.onVisible();
-                    // this.entry.classList.add("test-class");
-                    console.log("here is what my entry looks like", entry);
+                    entry.target.classList.add("album-tile-active");
+
+                    console.log(
+                        "here is what my entry looks like",
+                        entry.target
+                    );
                 } else {
-                    // entry.style.opacity = "0";
+                    entry.target.style.opacity = "0";
                 }
             },
             {
