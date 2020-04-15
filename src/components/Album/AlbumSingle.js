@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { useInView } from "react-intersection-observer";
+import TrackVisibility from "../TrackVisibility/TrackVisibility";
 
 const AlbumWrapper = styled.div`
     border: 1px solid black;
     max-width: 280px;
     background-color: #33d233;
-    margin: 16px auto;
+    margin: 16px 9px;
     border-radius: 5px;
     &:hover {
         transition: all 0.25s ease-in-out;
@@ -66,29 +66,25 @@ const AlbumSingle = (props) => {
     // console.log(props);
     // console.log(props.children);
 
-    const [ref, inView] = useInView({
-        threshold: 0.9,
-    });
-
-    console.log("this is what my ref looks like");
-
     return (
-        <AlbumWrapper className="AlbumTile" inView={inView}>
-            <AlbumInner ref={ref}>
-                {/* set the album title */}
-                <AlbumTitle>{props.title}</AlbumTitle>
-                {/* set the album image */}
-                <AlbumImg src={props.image} />
-                {/* set the album price */}
-                <AlbumPrice>{props.price}</AlbumPrice>
-                {/* buy the album button */}
-                <AlbumBuyButton>
-                    <AlbumBuyLink href={props.buy} target="_blank">
-                        buy now
-                    </AlbumBuyLink>
-                </AlbumBuyButton>
-            </AlbumInner>
-        </AlbumWrapper>
+        <TrackVisibility>
+            <AlbumWrapper className="AlbumTile">
+                <AlbumInner>
+                    {/* set the album title */}
+                    <AlbumTitle>{props.title}</AlbumTitle>
+                    {/* set the album image */}
+                    <AlbumImg src={props.image} />
+                    {/* set the album price */}
+                    <AlbumPrice>{props.price}</AlbumPrice>
+                    {/* buy the album button */}
+                    <AlbumBuyButton>
+                        <AlbumBuyLink href={props.buy} target="_blank">
+                            buy now
+                        </AlbumBuyLink>
+                    </AlbumBuyButton>
+                </AlbumInner>
+            </AlbumWrapper>
+        </TrackVisibility>
     );
 };
 

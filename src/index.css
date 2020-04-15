@@ -28,3 +28,8 @@ code {
 .album-tile-active {
     animation: fadeInTile 2s infinite;
 }
+
+.test-class {
+    background-color: red;
+    height: 400px;
+}
