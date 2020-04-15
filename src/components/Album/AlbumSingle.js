@@ -8,6 +8,7 @@ const AlbumWrapper = styled.div`
     background-color: #33d233;
     margin: 16px 9px;
     border-radius: 5px;
+    opacity: 0;
     &:hover {
         transition: all 0.25s ease-in-out;
         transform: scale(1.1);

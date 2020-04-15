@@ -7,23 +7,25 @@ class TrackVisibility extends Component {
     async componentDidMount() {
         const observer = new IntersectionObserver(
             ([entry]) => {
+                // Item is fully in view
                 if (entry.intersectionRatio === 1) {
-                    // Item is fully in view
-                    // this.props.onVisible();
-                    entry.target.classList.add("album-tile-active");
-
-                    console.log(
-                        "here is what my entry looks like",
-                        entry.target
-                    );
-                } else {
-                    entry.target.style.opacity = "0";
+                    // console.log(
+                    //     "here is what my entry looks like",
+                    //     entry.target
+                    // );
+                    // if entry is fully in view, set the opacity
+                    entry.target.firstElementChild.style.opacity = "1";
+                } else if (entry.intersectionRatio < 0.8) {
+                    // if the entry isn't in view, remove the class
+                    // otherwise set the opacity to 0
+                    entry.target.firstElementChild.style.opacity = "0";
                 }
             },
             {
                 root: null,
                 rootMargin: "0px",
-                threshold: 1.0,
+                // threshold: 1.0,
+                threshold: 1,
             }
         );
         if (this.ref.current) {
